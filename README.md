@@ -11,7 +11,7 @@ The workflow follows a standard DevOps lifecycle:
 3. **CI/CD**: Fully automated pipeline using **GitHub Actions**.
 4. **Security**: Secure authentication with Azure using **OIDC (OpenID Connect)**.
 
-## 🛠 Tech Stack
+## Tech Stack
 * **Cloud Provider:** Microsoft Azure
 * **Orchestration:** Azure Kubernetes Service (AKS)
 * **Infrastructure as Code:** OpenTofu
@@ -19,7 +19,7 @@ The workflow follows a standard DevOps lifecycle:
 * **Container Registry:** Azure Container Registry (ACR)
 * **Language:** Node.js
 
-## ⚙️ How the Pipeline Works
+## How the Pipeline Works
 Every time a commit is pushed to the `main` branch, the following steps are triggered automatically:
 1. **Login**: Securely authenticates to Azure via OIDC.
 2. **Build**: Builds the Docker image.
