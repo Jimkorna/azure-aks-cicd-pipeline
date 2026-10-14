@@ -4,7 +4,7 @@ This repository contains an end-to-end, automated deployment pipeline for a cont
 
 The project demonstrates modern DevOps practices, including Infrastructure as Code (IaC), continuous integration/deployment (CI/CD), and secure cloud authentication.
 
-## 🚀 Architecture Overview
+## Architecture Overview
 The workflow follows a standard DevOps lifecycle:
 1. **Infrastructure**: Provisioned using **OpenTofu**.
 2. **Containerization**: The application is containerized using **Docker**.
@@ -26,7 +26,7 @@ Every time a commit is pushed to the `main` branch, the following steps are trig
 3. **Push**: Pushes the image to the Azure Container Registry.
 4. **Deploy**: Updates the Kubernetes deployment in AKS using `kubectl`.
 
-## 📸 Screenshots
+## Screenshots
 <img width="745" height="104" alt="image" src="https://github.com/user-attachments/assets/76ec2c50-d120-488b-86f6-0cb0aa6b6ae4" />
 
 
@@ -39,7 +39,7 @@ Every time a commit is pushed to the `main` branch, the following steps are trig
 <img width="3525" height="1888" alt="image" src="https://github.com/user-attachments/assets/20c5d759-b4e3-4333-9d98-7e88ea15d959" />
 
 
-## 🚧 Challenges & Troubleshooting
+## Challenges & Troubleshooting
 Building this pipeline involved overcoming several real-world DevOps challenges:
 
 * **Transitioning to OIDC Authentication:** Instead of using legacy, hardcoded JSON credentials (`AZURE_CREDENTIALS`), I implemented the modern and more secure **OpenID Connect (OIDC)** method. This required setting up Federated Credentials in Azure AD and mapping `AZURE_CLIENT_ID`, `AZURE_TENANT_ID`, and `AZURE_SUBSCRIPTION_ID` to individual GitHub Secrets.
@@ -47,7 +47,7 @@ Building this pipeline involved overcoming several real-world DevOps challenges:
 * **Workflow Directory Structure:** The GitHub Actions pipeline wouldn't trigger automatically at first because the `.github/workflows` folder was accidentally nested inside the project subfolder. Moving it to the absolute root of the repository resolved the issue and enabled automatic triggers on `git push`.
 * **Context/Path Management in CI/CD:** Since the application code (`server.js`) and the `Dockerfile` were located in a subfolder, the pipeline failed to build the image. I fixed this by configuring the pipeline steps to explicitly change directories (`cd azure-aks-project`) before executing the `docker build` and `kubectl apply` commands.
 
-## 💡 Key Learnings
+## Key Learnings
 * Mastering OpenTofu for infrastructure provisioning.
 * Implementing OIDC for secure, passwordless authentication between GitHub and Azure.
 * Setting up automated Kubernetes rollouts to ensure zero-downtime updates.
